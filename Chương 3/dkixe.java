@@ -1,58 +1,97 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package oopjava;
-import java.util.Scanner;
 
-public class dkixe {
-    private String hodem;
-    private String ten;
-    private String loaixe;
-    private int dungtich;
-    private double gia;
-    double thue;
-    
-    public dkixe() {
+/**
+ *
+ * @author HP One
+ */
+import java.util.Scanner;
+public class maindkixe {
+    public static void main(String[] args) {
+        Scanner sn = new Scanner(System.in);
+        
+        System.out.println("1. Nhap danh sach xe.");
+        System.out.println("2. In danh sach xe");
+        System.out.println("3. Xuat thue");
+        System.out.println("4. Sap xep danh sach theo ten chu xe tang dan");
+        System.out.println("5. Dua ra xe nop thue lon nhat");
+        System.out.println("6. Thoat");
+        
+        int lc;
+        int n;
+        dkixe[] a = null;
+        do {
+            System.out.print("Nhap lua chon cua ban: ");
+            lc = sn.nextInt();
+            switch (lc) {
+                case 1: {
+                    System.out.print("Nhap so xe:");
+                    n = sn.nextInt();
+                    a = new dkixe[n];
+                    for (int i=0;i<n;i++) {
+                        a[i] = new dkixe();
+                        a[i].nhap();
+                        a[i].setThue(a[i].tthue());                      
+                    }  
+                    break;
+                }
+                
+                case 2: {
+                    System.out.printf("%-15s %-15s %-15s %15s %15s %15s %n", "Ho dem","Ten","Loai xe","Dung tich","Gia","Thue phai nop"); 
+                    for (int i=0;i<a.length;i++)
+                        a[i].inds();
+                    break;
+                }    
+                
+                case 3: {
+                    System.out.printf("%-15s %-15s %-15s %15s %15s %15s %n", "Ho dem","Ten","Loai xe","Dung tich","Gia","Thue phai nop"); 
+                    for (int i=0;i<a.length;i++)
+                        a[i].inds();
+                    break;
+                }
+                
+                case 4: {
+                    for (int i=0;i<a.length-1;i++)
+                        for (int j=1;j<a.length;j++)
+                        {
+                            if (a[i].getTen().compareToIgnoreCase(a[j].getTen())>0) {
+                                dkixe tg;
+                                tg=a[i];
+                                a[i]=a[j];
+                                a[j]=tg;
+                            }
+                        }
+                    System.out.println("Danh sach xe sau khi sap xep:");
+                    System.out.printf("%-15s %-15s %-15s %15s %15s %15s %n", "Ho dem","Ten","Loai xe","Dung tich","Gia","Thue phai nop");
+                    for (int i=0;i<a.length;i++)
+                        a[i].inds();
+                    break;        
+                }
+                
+                case 5: {
+                    double maxx = a[0].getThue();
+                    for (int i=1;i<a.length;i++)
+                        if (maxx<a[i].getThue()) maxx=a[i].getThue();
+                    System.out.println("Danh sach xe phai nop thue lon nhat:");
+                    System.out.printf("%-15s %-15s %-15s %15s %15s %15s %n", "Ho dem","Ten","Loai xe","Dung tich","Gia","Thue phai nop");
+                    for (int i=0;i<a.length;i++)
+                        if (a[i].getThue()==maxx) {
+                            a[i].inds();
+                        }
+                    break;    
+                }          
+            }
+                
+        } while (lc!=6);
+        
         
     }
 
-    public String getTen() {
-        return ten;
-    }
     
-    public void setThue(double thue) {
-        this.thue = thue;
-    }
 
-    public double getThue() {
-        return thue;
-    }
     
-    
-    public void nhap() {
-        Scanner sn = new Scanner(System.in);
-        System.out.print("Nhap ho dem:");
-        hodem = sn.nextLine();
-        System.out.print("Nhap ten:");
-        ten = sn.nextLine();
-        System.out.print("Nhap loai xe:");
-        loaixe = sn.nextLine();
-        System.out.print("Nhap dung tich:");
-        dungtich = sn.nextInt();
-        System.out.print("Nhap gia xe:");
-        gia = sn.nextFloat();
-    }
-    
-    
-    public double tthue() {
-        if (dungtich<100) return gia*0.01;
-        else if (dungtich<200) return gia*0.03;
-        else return gia*0.05;
-    }
-    
-    public void inds() {
-        System.out.println(hodem + "\t\t\t" + ten + "\t\t\t" + loaixe + "\t\t\t" + dungtich + "\t\t\t" + gia);
-    }
-    
-    public void inthue() {
-        System.out.println(hodem + "\t\t\t" + ten + "\t\t\t" + thue);
-    }
-    
+
 }
