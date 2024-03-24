@@ -21,6 +21,7 @@ public class maindkixe {
         System.out.println("6. Thoat");
         
         int lc;
+        int n;
         dkixe[] a = null;
         do {
             System.out.print("Nhap lua chon cua ban: ");
@@ -28,7 +29,7 @@ public class maindkixe {
             switch (lc) {
                 case 1: {
                     System.out.print("Nhap so xe:");
-                    int n = sn.nextInt();
+                    n = sn.nextInt();
                     a = new dkixe[n];
                     for (int i=0;i<n;i++) {
                         a[i] = new dkixe();
@@ -39,16 +40,16 @@ public class maindkixe {
                 }
                 
                 case 2: {
-                    System.out.println("Ho dem\t\t\tTen\t\t\tLoai xe\t\t\tDung tich\t\t\tGia");
+                    System.out.printf("%-15s %-15s %-15s %15s %15s %15s %n", "Ho dem","Ten","Loai xe","Dung tich","Gia","Thue phai nop"); 
                     for (int i=0;i<a.length;i++)
                         a[i].inds();
                     break;
                 }    
                 
                 case 3: {
-                    System.out.println("Ho dem\t\t\tTen\t\t\tThue phai dong");
+                    System.out.printf("%-15s %-15s %-15s %15s %15s %15s %n", "Ho dem","Ten","Loai xe","Dung tich","Gia","Thue phai nop"); 
                     for (int i=0;i<a.length;i++)
-                        a[i].inthue();
+                        a[i].inds();
                     break;
                 }
                 
@@ -63,7 +64,8 @@ public class maindkixe {
                                 a[j]=tg;
                             }
                         }
-                    System.out.println("Ho dem\t\t\tTen\t\t\tLoai xe\t\t\tDung tich\t\t\tGia");
+                    System.out.println("Danh sach xe sau khi sap xep:");
+                    System.out.printf("%-15s %-15s %-15s %15s %15s %15s %n", "Ho dem","Ten","Loai xe","Dung tich","Gia","Thue phai nop");
                     for (int i=0;i<a.length;i++)
                         a[i].inds();
                     break;        
@@ -74,6 +76,7 @@ public class maindkixe {
                     for (int i=1;i<a.length;i++)
                         if (maxx<a[i].getThue()) maxx=a[i].getThue();
                     System.out.println("Danh sach xe phai nop thue lon nhat:");
+                    System.out.printf("%-15s %-15s %-15s %15s %15s %15s %n", "Ho dem","Ten","Loai xe","Dung tich","Gia","Thue phai nop");
                     for (int i=0;i<a.length;i++)
                         if (a[i].getThue()==maxx) {
                             a[i].inds();
